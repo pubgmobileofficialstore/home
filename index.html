@@ -1,1 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Top-Up Store</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;background:#10131c;color:white;
+  font-family:Arial,sans-serif
+}
+header{
+  background:#1a2030;padding:20px;
+  text-align:center;border-bottom:1px solid #333
+}
+header h1{color:#ffc107;margin:0}
+.container{max-width:900px;margin:auto;padding:25px}
+.card{
+  background:#1c2333;padding:20px;
+  border-radius:12px;margin:18px 0
+}
+input{
+  width:100%;padding:14px;margin:10px 0;
+  border-radius:8px;border:1px solid #444;
+  background:#111827;color:white
+}
+.packages{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:12px
+}
+.package{
+  background:#293247;padding:18px;
+  border:2px solid transparent;border-radius:10px;
+  cursor:pointer;text-align:center
+}
+.package:hover{border-color:#ffc107}
+.package.selected{border-color:#ffc107}
+button{
+  width:100%;padding:15px;background:#ffc107;
+  border:0;border-radius:8px;font-weight:bold;
+  cursor:pointer;font-size:16px
+}
+.payment{
+  display:flex;gap:10px;flex-wrap:wrap
+}
+.payment div{
+  background:#293247;padding:14px;
+  border-radius:8px;flex:1;text-align:center
+}
+footer{text-align:center;color:#aaa;padding:25px}
+</style>
+</head>
+<body>
 
+<header>
+<h1>GAME TOP-UP STORE</h1>
+<p>Gaming Credits & Top-Ups</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>Player Details</h2>
+<input id="player" placeholder="Enter Player ID">
+<input id="server" placeholder="Enter Server / Region">
+</div>
+
+<div class="card">
+<h2>Select UC Package</h2>
+<div class="packages">
+<div class="package" onclick="selectPackage(this,'60 UC',100)">
+60 UC<br>Rs. 100
+</div>
+<div class="package" onclick="selectPackage(this,'325 UC',500)">
+325 UC<br>Rs. 500
+</div>
+<div class="package" onclick="selectPackage(this,'660 UC',1000)">
+660 UC<br>Rs. 1000
+</div>
+<div class="package" onclick="selectPackage(this,'1800 UC',2500)">
+1800 UC<br>Rs. 2500
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2>Payment Method</h2>
+<div class="payment">
+<div>Easypaisa</div>
+<div>JazzCash</div>
+<div>Debit / Credit Card</div>
+</div>
+<p style="color:#aaa">
+Payment options shown are demo only.
+</p>
+</div>
+
+<div class="card">
+<h2>Order Summary</h2>
+<p id="summary">Please select a package.</p>
+<button onclick="order()">Place Demo Order</button>
+</div>
+
+</div>
+
+<footer>
+Demo Gaming Store | Not an official PUBG website
+</footer>
+
+<script>
+let selected = null;
+
+function selectPackage(el,name,price){
+  document.querySelectorAll('.package')
+    .forEach(p=>p.classList.remove('selected'));
+  el.classList.add('selected');
+  selected={name,price};
+  document.getElementById('summary').innerText=
+    name+" | Rs. "+price;
+}
+
+function order(){
+  let player=document.getElementById('player').value;
+  let server=document.getElementById('server').value;
+
+  if(!player || !server || !selected){
+    alert("Enter Player ID, Server and select package.");
+    return;
+  }
+
+  alert("Demo order created! No payment has been processed.");
+}
+</script>
+
+</body>
+</html>
