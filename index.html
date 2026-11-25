@@ -6,130 +6,108 @@
 <title>Game Top-Up Store</title>
 <style>
 *{box-sizing:border-box}
-body{
-  margin:0;background:#10131c;color:white;
-  font-family:Arial,sans-serif
-}
-header{
-  background:#1a2030;padding:20px;
-  text-align:center;border-bottom:1px solid #333
-}
-header h1{color:#ffc107;margin:0}
-.container{max-width:900px;margin:auto;padding:25px}
-.card{
-  background:#1c2333;padding:20px;
-  border-radius:12px;margin:18px 0
-}
-input{
-  width:100%;padding:14px;margin:10px 0;
-  border-radius:8px;border:1px solid #444;
-  background:#111827;color:white
-}
-.packages{
-  display:grid;grid-template-columns:repeat(2,1fr);
-  gap:12px
-}
-.package{
-  background:#293247;padding:18px;
-  border:2px solid transparent;border-radius:10px;
-  cursor:pointer;text-align:center
-}
-.package:hover{border-color:#ffc107}
-.package.selected{border-color:#ffc107}
-button{
-  width:100%;padding:15px;background:#ffc107;
-  border:0;border-radius:8px;font-weight:bold;
-  cursor:pointer;font-size:16px
-}
-.payment{
-  display:flex;gap:10px;flex-wrap:wrap
-}
-.payment div{
-  background:#293247;padding:14px;
-  border-radius:8px;flex:1;text-align:center
-}
-footer{text-align:center;color:#aaa;padding:25px}
+body{margin:0;background:#090e19;color:white;font-family:Arial,sans-serif}
+header{padding:20px 7%;display:flex;justify-content:space-between;align-items:center;background:#111a2b}
+.logo{font-size:23px;font-weight:bold;color:#35d5ff}
+nav a{color:white;text-decoration:none;margin-left:20px}
+.hero{padding:75px 8%;background:linear-gradient(90deg,#07101f,#102b49,#111827);text-align:center}
+.hero h1{font-size:42px;margin:10px}
+.hero p{color:#c4d3e8}
+.tag{color:#35d5ff;font-weight:bold}
+.container{max-width:1000px;margin:auto;padding:30px 18px}
+h2{color:#35d5ff}
+.card{background:#151f31;padding:22px;border-radius:14px;margin:20px 0}
+.packages{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.package{background:#202e45;border:2px solid transparent;border-radius:12px;padding:20px;text-align:center;cursor:pointer}
+.package:hover,.package.selected{border-color:#35d5ff}
+.price{color:#35d5ff;font-weight:bold;margin-top:10px}
+input{width:100%;padding:14px;margin:9px 0;background:#0c1422;border:1px solid #34445c;border-radius:8px;color:white}
+.methods{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.method{padding:17px;background:#202e45;border-radius:10px;text-align:center}
+button{background:#20bde8;color:#07101b;padding:14px;border:0;border-radius:9px;font-weight:bold;cursor:pointer;width:100%}
+button:disabled{opacity:.5;cursor:not-allowed}
+.note{color:#aab8ca;font-size:13px;line-height:1.6}
+footer{text-align:center;padding:25px;background:#111a2b;color:#9caec5}
 </style>
 </head>
 <body>
 
 <header>
-<h1>GAME TOP-UP STORE</h1>
-<p>Gaming Credits & Top-Ups</p>
+<div class="logo">GAME TOP-UP</div>
+<nav>
+<a href="#home">Home</a>
+<a href="#packages">Packages</a>
+<a href="#order">Order</a>
+</nav>
 </header>
 
-<div class="container">
+<section class="hero" id="home">
+<p class="tag">GAMING TOP-UP STORE</p>
+<h1>LEVEL UP YOUR GAME</h1>
+<p>Choose your package and explore our gaming top-up store.</p>
+</section>
 
-<div class="card">
-<h2>Player Details</h2>
-<input id="player" placeholder="Enter Player ID">
-<input id="server" placeholder="Enter Server / Region">
-</div>
+<main class="container">
 
-<div class="card">
-<h2>Select UC Package</h2>
+<section class="card">
+<h2>01. Player Details</h2>
+<input id="player" placeholder="Enter PUBG Player ID">
+<input id="region" placeholder="Enter Region / Server">
+</section>
+
+<section class="card" id="packages">
+<h2>02. Select UC Package</h2>
 <div class="packages">
-<div class="package" onclick="selectPackage(this,'60 UC',100)">
-60 UC<br>Rs. 100
+<div class="package" onclick="choose(this,'60 UC',100)">60 UC<div class="price">Rs. 100</div></div>
+<div class="package" onclick="choose(this,'325 UC',500)">325 UC<div class="price">Rs. 500</div></div>
+<div class="package" onclick="choose(this,'660 UC',1000)">660 UC<div class="price">Rs. 1,000</div></div>
+<div class="package" onclick="choose(this,'1800 UC',2500)">1800 UC<div class="price">Rs. 2,500</div></div>
 </div>
-<div class="package" onclick="selectPackage(this,'325 UC',500)">
-325 UC<br>Rs. 500
-</div>
-<div class="package" onclick="selectPackage(this,'660 UC',1000)">
-660 UC<br>Rs. 1000
-</div>
-<div class="package" onclick="selectPackage(this,'1800 UC',2500)">
-1800 UC<br>Rs. 2500
-</div>
-</div>
-</div>
+<p class="note">Prices are sample placeholders. Confirm actual prices and authorized supply before selling.</p>
+</section>
 
-<div class="card">
-<h2>Payment Method</h2>
-<div class="payment">
-<div>Easypaisa</div>
-<div>JazzCash</div>
-<div>Debit / Credit Card</div>
+<section class="card">
+<h2>03. Payment Method</h2>
+<div class="methods">
+<div class="method">Easypaisa</div>
+<div class="method">JazzCash</div>
+<div class="method">Debit / Credit Card</div>
 </div>
-<p style="color:#aaa">
-Payment options shown are demo only.
-</p>
-</div>
+<p class="note">Payment gateway integration is not active yet. No payment will be collected here.</p>
+</section>
 
-<div class="card">
-<h2>Order Summary</h2>
-<p id="summary">Please select a package.</p>
-<button onclick="order()">Place Demo Order</button>
-</div>
+<section class="card" id="order">
+<h2>04. Order Summary</h2>
+<p id="summary">Select a UC package first.</p>
+<button disabled id="orderBtn" onclick="demoOrder()">Continue (Demo)</button>
+<p class="note">Demo only. This button does not create a paid order or deliver UC.</p>
+</section>
 
-</div>
+</main>
 
 <footer>
-Demo Gaming Store | Not an official PUBG website
+Independent Gaming Store | Not affiliated with PUBG MOBILE
 </footer>
 
 <script>
-let selected = null;
+let selected=null;
 
-function selectPackage(el,name,price){
-  document.querySelectorAll('.package')
-    .forEach(p=>p.classList.remove('selected'));
-  el.classList.add('selected');
-  selected={name,price};
-  document.getElementById('summary').innerText=
-    name+" | Rs. "+price;
+function choose(el,name,price){
+ document.querySelectorAll('.package').forEach(p=>p.classList.remove('selected'));
+ el.classList.add('selected');
+ selected={name,price};
+ document.getElementById('summary').textContent=name+' — Rs. '+price;
+ document.getElementById('orderBtn').disabled=false;
 }
 
-function order(){
-  let player=document.getElementById('player').value;
-  let server=document.getElementById('server').value;
-
-  if(!player || !server || !selected){
-    alert("Enter Player ID, Server and select package.");
-    return;
-  }
-
-  alert("Demo order created! No payment has been processed.");
+function demoOrder(){
+ const player=document.getElementById('player').value.trim();
+ const region=document.getElementById('region').value.trim();
+ if(!player||!region||!selected){
+  alert('Please enter Player ID, region and select a package.');
+  return;
+ }
+ alert('Demo only: No payment or delivery has been made.');
 }
 </script>
 
